@@ -55,7 +55,7 @@ class App extends Component {
           </UserOutput>
           {/* <UserInput changeUser={this.userNameHandler} /> */}
           <UserInput 
-            changeName={this.writeNameHandler}
+            changeName={this.writeNameHandler.bind(this)}
             userName={this.state.user[0].name}
           />
 
