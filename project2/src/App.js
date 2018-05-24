@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium, {StyleRoot} from 'radium'; 
 import './App.css';
 import Person from './Person/Person';
 
@@ -60,15 +61,17 @@ class App extends Component {
 
   render () {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      color:'white',
     };
 
     let persons = null;
-
+    // Conditionally shown content should be done in  javascript
+    // Use maps to output lists
     if(this.state.showPersons){
       persons=(
          <div>
@@ -82,13 +85,25 @@ class App extends Component {
              />
           })}
           </div>
-      )
+          
+      );
+      style.backgroundColor = 'red';
+
     }
+
+    const classes=[]
+    if(this.state.persons.length<=2){
+      classes.push('red'); // Class => red
+    }
+    if(this.state.persons.length<=1){
+      classes.push('bold');
+    }
+    
 
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <p>This is really working!</p>
+        <p className={classes.join(' ')}>This is really working!</p>
         <button 
           style={style}
           onClick={ this.togglePersonsHandler}>Show Names</button>

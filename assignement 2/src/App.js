@@ -32,7 +32,7 @@ class App extends Component {
 
   }
 
-  render() {
+  render() { 
 
     let charz=this.state.inputVal.split("")
     let counter=0;
